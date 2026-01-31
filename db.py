@@ -309,13 +309,20 @@ def atualizar_renda(id_, desc, val):
             (desc, val, id_)
         )
 
-def excluir_renda(id_):
-    with conectar() as conn:
-        conn.execute("DELETE FROM rendas WHERE id=?", (id_,))
 
-def excluir_gasto(id_):
-    with conectar() as conn:
-        conn.execute("DELETE FROM gastos WHERE id=?", (id_,))
+def excluir_renda(renda_id):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM rendas WHERE id = ?", (renda_id,))
+    conn.commit()
+    conn.close()
+
+def excluir_gasto(gasto_id):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute("DELETE FROM gastos WHERE id = ?", (gasto_id,))
+    conn.commit()
+    conn.close()
 
 # ---------------- EXPORT / BACKUP ----------------
 
