@@ -107,7 +107,7 @@ def tela_admin():
 
     st.divider()
     st.subheader("Logs de auditoria (recentes)")
-    logs = listar_audit_logs(limit=500)
+    logs = listar_audit_logs(limit=100)
     if logs.empty:
         st.info("Sem eventos registrados.")
     else:
